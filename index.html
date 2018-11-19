@@ -42,6 +42,7 @@ var max = addressPoints.reduce(function(acc, cur) {
 
 var heat = L.heatLayer(addressPoints, {
   max: max,
+  gradient: {0.4: "blue", 0.65:"lime", 1: "red"}
 }).addTo(map);
 
 </script>
