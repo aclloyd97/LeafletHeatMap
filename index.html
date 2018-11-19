@@ -38,9 +38,20 @@ var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
 
 //addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 
+<<<<<<< Updated upstream
 var max = addressPoints.reduce(function(acc, cur) {
   return cur[2] > acc ? cur[2] : acc;
 }, 0);
+=======
+<<<<<<< Updated upstream
+var totalHeatLayer = L.heatLayer(addressPoints).addTo(map);
+=======
+<<<<<<< HEAD
+var max = addressPoints.reduce(function(acc, cur) {
+  return cur[2] > acc ? cur[2] : acc;
+}, 0);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 var heat = L.heatLayer(addressPoints, {
       //max: max,
@@ -58,6 +69,9 @@ var heat = L.heatLayer(addressPoints, {
           //https://www.w3schools.com/colors/colors_groups.asp
 }
 ).addTo(map);
+=======
+var totalHeatLayer = L.heatLayer(addressPoints).addTo(map);
+>>>>>>> master
 
 </script>
 </body>
