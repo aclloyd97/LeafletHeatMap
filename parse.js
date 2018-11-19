@@ -1,6 +1,12 @@
 // In Node, we have to require external libraries in this way:
 var fs = require('fs'); // This requires the filesystem (fs) object, which reads and writes files
 
+// Set this to the CSV index of the rainfall data you want to collect:
+var rain_index = 16;
+// The file name for writing the data (change if you want to have multiple data sets):
+var output_file = 'data.js';
+// Set this to the variable name you want to define for your data:
+var var_name = 'addressPoints';
 
 var CSV_DATA = fs.readFileSync('./harvey_rain.csv'). // Read in the CSV file
   toString(). // Convert the contents into a string
@@ -19,7 +25,7 @@ CSV_DATA.forEach(csv_line => { // csv_line contains each line of the CSV file
 	JS_DATA.push([
 		parseFloat(csv_array[2], 10) || 0, // Get latitude and convert from string to floating point number
 		long, // Longitude (calculated above)
-    parseFloat(csv_array[16], 10) || 0, // Get total rainfall and convert from string to floating point number
+    parseFloat(csv_array[rain_index], 10) || 0, // Get total rainfall and convert from string to floating point number
     // Change 16 above if you want to look at individual days
 	]);
 });
@@ -27,7 +33,5 @@ CSV_DATA.forEach(csv_line => { // csv_line contains each line of the CSV file
 // Convert the array of arrays into a serialized string that can be later converted back into an array
 // by JavaScript:
 var output_contents = JSON.stringify(JS_DATA.slice(0,-1), null, 2);
-// The file name for writing the data (change if you want to have multiple data sets):
-var output_file = 'data.js';
 // Write the file:
-fs.writeFileSync(output_file, `var addressPoints = ${output_contents};`);
+fs.writeFileSync(output_file, `var ${var_name} = ${output_contents};`);

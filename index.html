@@ -26,6 +26,7 @@
 <script src="https://cdn.jsdelivr.net/gh/mourner/simpleheat/simpleheat.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Harvinator/Leaflet.heat@patch-1/src/HeatLayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Leaflet/Leaflet.heat/dist/leaflet-heat.js"></script>
+<!-- Copy and paste this line, replacing "data.js" with the names of other files you created -->
 <script src="data.js"></script>
 
 <script>
@@ -36,11 +37,11 @@ var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, &copy; <a href= "https://cato.com/attributions">CARTO</a>'
 }).addTo(map);
 
-//addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
+// Copy and paste this line, changing the variable name (totalHeatLayer) and the input to the heatLayer
+// function (addressPoints) to add additional heat layers (keep track of the variable name, you'll need
+// it to add map controls)
 
-var max = addressPoints.reduce(function(acc, cur) {
-  return cur[2] > acc ? cur[2] : acc;
-}, 0);
+var totalHeatLayer = L.heatLayer(addressPoints).addTo(map);
 
 var heat = L.heatLayer(addressPoints, {
       //max: max,
