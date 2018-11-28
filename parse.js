@@ -2,13 +2,19 @@
 var fs = require('fs'); // This requires the filesystem (fs) object, which reads and writes files
 
 // Set this to the CSV index of the rainfall data you want to collect:
-var rain_index = 16;
+var rain_index = 05;
+    //Aug 25 = 05, Aug 26 = 06, Aug 27 = 07, Aug 28 = 08,
+    //Aug 29 = 09, Aug 30 = 10, Aug 31 = 11, Sep 1 = 12,
+    //Sep 2 = 13, Sep 3 = 14, Sep 4 = 15, Total = 16
 // The file name for writing the data (change if you want to have multiple data sets):
-var output_file = 'data.js';
+var output_file = 'data_0825.js';
+    //files should coordinate with date s.t. Aug 25 = data_0825.js
 // Set this to the variable name you want to define for your data:
 var var_name = 'addressPoints';
+    //var_name should coordinate with date s.t. Aug 25 = addressPoints_0825.js
 
-var CSV_DATA = fs.readFileSync('./harvey_rain.csv'). // Read in the CSV file
+var CSV_DATA = fs.readFileSync('./harvey_rain_texas.csv'). // Read in the CSV file
+    //check if you want to use texas data or us data
   toString(). // Convert the contents into a string
   split(/\n/). // Break that string into an array of strings (line-by-line)
   slice(1); // Remove the first element (which contains column names)
