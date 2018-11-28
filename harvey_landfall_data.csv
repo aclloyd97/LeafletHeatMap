@@ -1,4 +1,3 @@
-,,,,Wind,
 Date/Time,Latitude,Longitude,Pressure,Speed,Stage
 (UTC},(ON},(OW},(mb},(kt},
 16 / 0600,13.7,45.8,1013,25,low
@@ -75,7 +74,7 @@ Date/Time,Latitude,Longitude,Pressure,Speed,Stage
 02 I 0000,37.2,85.6,1007,20,II
 02 I 0600,37.9,84.9,1009,20,II
 02 / 1200,38.2,84.7,1013,15,II
-02 I 1800,,,,,dissipated
+
 18 / 1000,13.1,59.6,1004,40,landfall on the southern end of Barbados
 18 / 1500,13.2,61.2,1004,40,landfall on St. Vincent
 26 I 0300,28,96.9,937,115,"minimum pressure, maximum winds and landfall on San Jose Island, TX"

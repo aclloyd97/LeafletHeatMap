@@ -29,7 +29,8 @@ Outline:
 <script src="https://cdn.jsdelivr.net/gh/mourner/simpleheat/simpleheat.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Harvinator/Leaflet.heat@patch-1/src/HeatLayer.min.js"></script>
 <!-- Copy and paste this line, replacing "data.js" with the names of other files you created -->
-<script src="data.js"></script>
+<script src="data/data_texas_total.js"></script>
+<script src="data/data_landfall.js"></script>
 
 <script>
 
@@ -46,6 +47,11 @@ var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
 // it to add map controls)
 
 var totalHeatLayer = L.heatLayer(addressPoints).addTo(map);
+var landfall = L.polyline(addressPoints2).addTo(map);
+//addressPoints2.forEach(function(point){
+          //new L.marker([point[0],point[1]]).bindPopup(point[0]+", "+point[1]).addTo(map);
+        //})
+
 </script>
 </body>
 </html>
