@@ -3,18 +3,18 @@ var totalHeatLayer = L.heatLayer(addressPoints).addTo(map);
 =======
 
 var heat = L.heatLayer(addressPoints, {
-      //max: max,
-      //gradient: {
-          //0.1: "white",
-          //0.2: "light steel blue",
-          //0.3: "light blue",
-          //0.4: "powder blue",
-          //0.5: "sky blue",
-          //0.6: "cornflower blue",
-          //0.7: "dodger blue",
-          //0.8: "blue" ,
-          //0.9: "medium blue",
-          //1.0: "navy"}
+      max: max,
+      gradient: {
+          0.1: "white",
+          0.2: "lightsteelblue",
+          0.3: "lightblue",
+          0.4: "powderblue",
+          0.5: "skyblue",
+          0.6: "cornflowerblue",
+          0.7: "dodgerblue",
+          0.8: "blue" ,
+          0.9: "mediumblue",
+          1.0: "navy"}
           //https://www.w3schools.com/colors/colors_groups.asp
 }
 ).addTo(map);

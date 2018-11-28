@@ -28,7 +28,7 @@ CSV_DATA.forEach(csv_line => { // csv_line contains each line of the CSV file
   var long = parseFloat(csv_array[2], 10) || 0; // Get the longitude point and convert from string to floating point number
   long = long >= 0 ? long * -1 : long; // Fix the ones that are entered wrong from CoCoRaHS
   // Add an array of data to the end of our output variable (.push adds to the end of an array)
-// if (csv-array[index]=== "CoCoRaHS")
+if (csv-array[index]=== "CoCoRaHS")
   JS_DATA.push([
 		parseFloat(csv_array[1], 10) || 0, // Get latitude and convert from string to floating point number
 		long, // Longitude (calculated above)

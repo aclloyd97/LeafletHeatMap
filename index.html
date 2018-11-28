@@ -29,25 +29,62 @@ Outline:
 <script src="https://cdn.jsdelivr.net/gh/mourner/simpleheat/simpleheat.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Harvinator/Leaflet.heat@patch-1/src/HeatLayer.min.js"></script>
 <!-- Copy and paste this line, replacing "data.js" with the names of other files you created -->
-<script src="data/data_texas_total.js"></script>
-<script src="data/data_landfall.js"></script>
+<script src="data/texas/dt_0827.js"></script>
+<script src="data/landfall/dl_landfall.js"></script>
 
 <script>
 
-var map = L.map('map').setView([31.5, -100], 6); // [Lat, Lng], Magn
-    // Texas Center: [31.5, -100]
+var map = L.map('map').setView([37, -97], 4.5); // [Lat, Lng], Magn
+    // Texas Center: [31.5, -100], 6
     // USA   Center: [37, -97]
 
 var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, &copy; <a href= "https://cato.com/attributions">CARTO</a>'
 }).addTo(map);
 
+var hurricaneIcon = L.icon({
+      iconUrl: 'hurricane-icon.png',
+
+      iconSize:     [38, 95], // size of the icon
+      shadowSize:   [50, 64], // size of the shadow
+      iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+      shadowAnchor: [4, 62],  // the same for the shadow
+      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      });
+
 // Copy and paste this line, changing the variable name (totalHeatLayer) and the input to the heatLayer
 // function (addressPoints) to add additional heat layers (keep track of the variable name, you'll need
 // it to add map controls)
 
 var totalHeatLayer = L.heatLayer(addressPoints).addTo(map);
-var landfall = L.polyline(addressPoints2).addTo(map);
+
+var heat = L.heatLayer(addressPoints, {
+      max: 1.0,
+      gradient: {
+          0.1: "white",
+          0.2: "lightsteelblue",
+          0.3: "lightblue",
+          0.4: "powderblue",
+          0.5: "skyblue",
+          0.6: "cornflowerblue",
+          0.7: "dodgerblue",
+          0.8: "blue" ,
+          0.9: "mediumblue",
+          1.0: "navy"}
+          //https://www.w3schools.com/colors/colors_groups.asp
+      }).addTo(map);
+
+var landfall = L.polyline(addressPoints2, {
+      color: "red"
+      //25 I 0000,25,94.4,973,80,II
+      //25 I 0600,25.6,95.1,966,90,II
+      //25 I 1200,26.3,95.8,949,95,II
+      //25 I 1800,27.1,96.3,943,105,II
+
+      }).addTo(map);
+
+L.marker ([29.1, -97.5]).addTo(map);
+
 //addressPoints2.forEach(function(point){
           //new L.marker([point[0],point[1]]).bindPopup(point[0]+", "+point[1]).addTo(map);
         //})
