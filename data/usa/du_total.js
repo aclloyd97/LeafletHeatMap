@@ -1,4 +1,4 @@
-var usaPoints = [
+var usaPoints_total = [
   [
     33.6,
     -85.65,

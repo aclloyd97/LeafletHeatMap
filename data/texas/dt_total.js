@@ -1,4 +1,4 @@
-var texasPoints = [
+var texasPoints_total = [
   [
     31.08,
     -95.7,

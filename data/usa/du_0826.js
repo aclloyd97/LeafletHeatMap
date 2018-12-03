@@ -1,4 +1,4 @@
-var usaPoints = [
+var usaPoints_0826 = [
   [
     0,
     0,

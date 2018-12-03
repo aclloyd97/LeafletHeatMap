@@ -1,4 +1,4 @@
-var addressPoints3 = [
+var flightPoints = [
   [
     42.3656,
     -71.0096

@@ -1,4 +1,4 @@
-var landfallPoints = [
+var landfallPoints_total = [
   [
     13.7,
     -45.8
