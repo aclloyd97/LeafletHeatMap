@@ -13,7 +13,7 @@ var output_file = 'data.js';
 var var_name = 'addressPoints';
     //var_name should coordinate with date s.t. Aug 25 = addressPoints_0825.js
 
-var CSV_DATA = fs.readFileSync('./harvey_rain_usa.csv'). // Read in the CSV file
+var CSV_DATA = fs.readFileSync('./data/harvey_rain_usa.csv'). // Read in the CSV file
     //check if you want to use texas data or us data
   toString(). // Convert the contents into a string
   split(/\n/). // Break that string into an array of strings (line-by-line)
