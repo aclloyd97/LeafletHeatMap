@@ -1,4 +1,4 @@
-var addressPoints = [
+var texasPoints = [
   [
     31.08,
     -95.7,

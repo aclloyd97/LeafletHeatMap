@@ -1,4 +1,4 @@
-var addressPoints = [
+var usaPoints = [
   [
     33.6,
     -85.65,

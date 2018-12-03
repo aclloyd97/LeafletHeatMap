@@ -1,4 +1,4 @@
-var addressPoints2 = [
+var landfallPoints = [
   [
     13.7,
     -45.8
