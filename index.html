@@ -3,9 +3,8 @@
 <head>
     <title>Leaflet.heat demo</title>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
-    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <style>
-        #map { width: 800px; height: 600px; }
+        .map { width: 600px; height: 600px; }
         body { font: 16px/1.4 "Helvetica Neue", Arial, sans-serif; }
         .ghbtns { position: relative; top: 4px; margin-left: 5px; }
         a { color: #0077ff; }
@@ -19,52 +18,90 @@
 <p>
   The flight over, for the most part, had been smooth. Looking out the window, the clouds hung low. A crack of lightning flashed across the sky--but no thunder followed. Typically I get nervous flying through a storm but today I hadn’t. The pilot kept the airplane relatively smooth and calm, considering the impending Hurricane.
 </p>
-<img src="images/20170826_203832.jpg" alt="Flight Departures" style="width:65%; height:65%; transform:rotate=90">
 <p>
   Flying from Boston, MA on I was concerned that they wouldn’t let us leave for Houston, TX. The Hurricane began formation in the Gulf of Mexico a few days prior, and as it loomed closer it became projected for Houston. My flight was one of the last to land in Houston. Wanting to evacuate the personnel as soon as possible, the airport didn’t allow luggage off of the plane. As I walked through the airport, I decided that Sunday morning, maybe Sunday afternoon, I would leave to return to College Station to be there for the first day of university classes.
 </p>
 <p>
   My dad picked me up in the 2014 Honda Civic, a small car, and we drove into the storm. Rain pelted the car at the same rate that we saw on the plane. On the ground, however, the water was much scarier. Why Dad didn’t bring the truck, I’ll never know. Lighting flashed, thunder cracked, rain poured. Dad drove us slowly through, trying to be careful of the rising water. There were times that I thought we would be the idiots stuck on the highway on the news. We made it home safely, thank goodness. I went to sleep fully expecting to leave in the morning for college.
 </p>
+<p>
+  You see, this wasn't my first Hurricane.
+</p>
+<!--<img src="images/20170826_203832.jpg" alt="Flight Departures" style="width:65%; height:65%; transform:rotate=90">
+<br>
+<img src="images/20170826_220011.jpg" alt="Flight Landing" style="width:65%; height:65%; transform:rotate=90">-->
+<div id = "Flight Video" style="text-alight:center">
+    <video id=flight_vid width= 560 height = 315 autoplay>
+      <source ="images/20170826_220011.mp4">
+    </video>
+</div>
+<p>
+  The last one I experienced, Hurricane Ike, had passed through Houston as well in 2008. I was in the 6th grade at the time. Hurricane Ike was mostly wind, making landfall on September 13 2008 with 95 mph winds as a category 2 according to NOAA. However, the total rainfall for Houston was around 15.75 inches. In some areas, like Galveston, there was a significant storm that impacted areas, reporting at 19 feet. Hurricanes didn't phase me. It was a natural disaster that I felt confident and well-versed in.
+</p>
+<p>
+  Harvey was different.
+</p>
+<p>
+  The trick about hurricanes, however, is there are a number of factors. Hurricanes are violent storms, particularly in the Caribbean, with a wind force that exceeds 74 mph; tropical storms, in comparison, is 34 mph. These storms are defined by their wind speed using the Saffir-Simpson Hurricane Wind Scale. This scale has its problems, as it does not account for other dangerous factors such as the physical size of the storm and the amount of precipitation. Hurricane Ike, for example, had the wind speed of a typical Hurricane Category 2, but the storm surge comparable to a Category 5. Hurricane Harvey was a category 4 hurricane, with a wind speed of 130 mph.
+</p>
+<div id="map1" class="map"></div>
+<p>
+  I woke up and looked out my window and my street was flooded, my yard was flooded. Harvey was flooding Houston. There was no way to leave as I had originally anticipated. The first night, Harvey dumped from [range or average] on Houston. Across the city, rain was covering everything from front lawns like mine to entire cities.
+</p>
+<p>
+  There was really nothing to do over the next few days besides watch the rainfall and the water rise. My family began making plans about moving furniture onto bricks, moving books upstairs, preparing for worst case scenarios. We took photos of the encroaching stormwater to help track how much rain has passed, how much flooding was happening. After e-mailing my professors about how I was unable to leave my house except by kayak, I turned to social media like everyone else. I watched my Facebook feed, my Instagram feed, etc. Everyone I knew was sharing and posting about the storm, about the rain, about the rising water. Hurricane Harvey became the most mediated natural disaster in history.
+</p>
+<p>
+  [maybe a gallery of images]
+</p>
+<p>
+ There was really nothing to do over the next few days besides watch the rain fall and the water rise. My family began making plans about moving furniture onto bricks, moving books upstairs, preparing for worst case scenanrios.
+</p>
+<p>
+  But that seemed to be all you could do during this natural disaster, watch your front lawn, wait for the water to lower, pray for the rain to stop, find stories of hope from a personal newsfeed. It was all anyone could talk about. The amount of rain that fell during the was monumental. After a few days, the storm left and the floodwaters drained. I drove off to College Station without another thought about the rain.
+</p>
+<p>
+  [most mediated storm in history]
+</p>
+<p>
+  When presented with a data-based project for English, my thoughts then turned back to the rain, the sheer amount of it. After some searching, I found a comprehensive list of the entire rainfall for the weather event, from formation to dissipation. The data listed over 6900 sources, a different location across the nation that recorded rainfall data. Some sources, such as a local Dallas network of airports, made sense. But one data source, CoCoRaHs, contributed 6750 sets of data for the hurricane. Expansive, the data ranged from Texas to Maine. Who was this?
+</p>
+<div id="map2" class="map"></div> <!--map 2 locations-->
 
-<div id="map"></div>
-
+<!---SCRIPTS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/mourner/simpleheat/simpleheat.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Harvinator/Leaflet.heat@patch-1/src/HeatLayer.min.js"></script>
-<!-- Copy and paste this line, replacing "data.js" with the names of other files you created -->
 <script src="data/texas/dt_0826.js"></script>
 <script src="data/usa/du_0826.js"></script>
 <script src="data/flight_path.js"></script>
 <script src="data/landfall/dl_landfall.js"></script>
-
-<script> //Map 1 = August 26, Flight
-
-var map1 = L.map('map').setView([37, -97], 4); // [Lat, Lng], Magn
+<script> //Map 1 = August 26 and Flight
+var map1 = L.map('map1', {center: [37, -97], zoom: 4}); // [Lat, Lng], Magn
     // Texas Center: [31.5, -100], 6
     // USA   Center: [37, -97], 4
 
-var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+var controls1 = L.control.layers().addTo(map1);
+
+var tiles1 = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, &copy; <a href= "https://cato.com/attributions">CARTO</a>'
 }).addTo(map1);
 
-var hurricaneIcon = L.icon({
+var hurricaneIcon1 = L.icon({
       iconUrl: 'hurricane-icon.png',
 
-      iconSize:     [38, 95], // size of the icon
-      shadowSize:   [50, 64], // size of the shadow
-      iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+      iconSize:     [50, 48], // size of the icon
+      //shadowSize:   [50, 64], // size of the shadow
+      iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
       shadowAnchor: [4, 62],  // the same for the shadow
-      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
       });
 
 // Copy and paste this line, changing the variable name (totalHeatLayer) and the input to the heatLayer
 // function (addressPoints) to add additional heat layers (keep track of the variable name, you'll need
 // it to add map controls)
 
-var totalHeatLayer = L.heatLayer(addressPoints).addTo(map1);
-
-var heat = L.heatLayer(addressPoints, {
+var heat1 = L.heatLayer(addressPoints, {
       max: 1.0,
       gradient: {
           0.1: "white",
@@ -80,44 +117,23 @@ var heat = L.heatLayer(addressPoints, {
           //https://www.w3schools.com/colors/colors_groups.asp
       }).addTo(map1);
 
-var landfall = L.polyline(addressPoints2, {color: "red"}).bindPopup("Hurricane Harvey's<br>storm path</br>").addTo(map1);
-var flight = L.polyline(addressPoints3, {color: "green"}).bindPopup("Flight 2728's path<br>from Boston to Houston</br>").addTo(map1);
-L.marker ([29.1, -97.5]).bindPopup("Hurricane Harvey<br>August 26</br>").addTo(map1);
+var landfall1 = L.polyline(landfallPoints, {color: "red"}).bindTooltip("Hurricane Harvey's<br>storm path</br>").addTo(map1); //Tool Tip
+  L.marker ([29.1, -97.5], {icon:hurricaneIcon1}).bindPopup("Hurricane Harvey<br>August 26</br>").addTo(map1);
+  //L.marker = Hurricane points at 0600 each day
 
-//addressPoints2.forEach(function(point){
-          //new L.marker([point[0],point[1]]).bindPopup(point[0]+", "+point[1]).addTo(map1);
-        //})
+var flight1 = L.polyline(addressPoints3, {color: "green"}).bindPopup("Flight 2728's path<br>from Boston to Houston</br>").addTo(map1);
 
+controls1.addOverlay(heat1,"Heat Layer");
+controls1.addOverlay(landfall1, "Hurricane Harvey path");
+controls1.addOverlay(flight1, "Fligt 2728");
 </script>
 
-<p>
-  You see, this wasn't my first Hurricane.
-</p>
-<p>
-  The last one I experienced, Hurricane Ike, had passed through Houston as well in 2008. I was in the 6th grade at the time. Hurricane Ike was a ag of wind, pushing trampolines into trees and roof shingles. In some areas, like Galveston, there was significant storm sure. When we were in Corpus Christi, we had prepared for Rita when I was in the fourth grade--but the storm ad suddenly changed paths and headed north to Houston. Hurricanes didn't phase me. It was a natural disaster that I felt confident and well-versed in.
-<p>
-  Harvey was different.
-</p>
-<p>
-  I woke up and looked out my window and my street was flooded, my yard was flooded. Harvey was flooding Houston. There was no way to leave, like I had originally anticipated.
-</p>
-<p>
- There was really nothing to do over the next few days besides watch the rain fall and the water rise. My family began making plans about moving furniture onto bricks, moving books upstairs, preparing for worst case scenanrios.
-</p>
-<p>
-  After e-mailng my professors about how I was unable to leave my house expect by kayak, I turned to social media like everyone else. I watched my Facebook feed, my Instagram feed, etc. Everyone I knew was sharing and posting about the storm, about the rain, about the rising water. Hurricane Harvey became the most mediated natural disaster in history.
-</p>
-<p>
-  [most mediated storm in history]
-</p>
-<p>
-  But that seemed to be all you oculd do during a natural disaster, watch your front lawn, wait for the water to lower, pray for the rain to stop, find stories of hope from a personal newsfeed. It was all anyone could talk about. The amount of rain that fell during the was monumental.
-</p>
-<script> //Map 2 = Hurricane Totals
-
-var map2 = L.map('map').setView([31.5, -100], 6); // [Lat, Lng], Magn
+<script> //Map 2 = Hurricane Totals and Sources as a Layer
+var map2 = L.map('map2', { center: [37, -97], zoom: 4, /*layers: [landfall]*/}); // [Lat, Lng], Magn
     // Texas Center: [31.5, -100], 6
     // USA   Center: [37, -97], 4
+
+var controls = L.control.layers().addTo(map2);
 
 var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, &copy; <a href= "https://cato.com/attributions">CARTO</a>'
@@ -126,20 +142,20 @@ var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
 var hurricaneIcon = L.icon({
       iconUrl: 'hurricane-icon.png',
 
-      iconSize:     [38, 95], // size of the icon
-      shadowSize:   [50, 64], // size of the shadow
-      iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+      iconSize:     [50, 48], // size of the icon
+      //shadowSize:   [50, 64], // size of the shadow
+      iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
       shadowAnchor: [4, 62],  // the same for the shadow
-      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
       });
 
 // Copy and paste this line, changing the variable name (totalHeatLayer) and the input to the heatLayer
 // function (addressPoints) to add additional heat layers (keep track of the variable name, you'll need
 // it to add map controls)
 
-var totalHeatLayer = L.heatLayer(addressPoints).addTo(map2);
+//var totalHeatLayer = L.heatLayer(addressPoints).addTo(map2);
 
-var heat = L.heatLayer(addressPoints, {
+var heat = L.heatLayer(addressPoints3, {
       max: 1.0,
       gradient: {
           0.1: "white",
@@ -155,13 +171,33 @@ var heat = L.heatLayer(addressPoints, {
           //https://www.w3schools.com/colors/colors_groups.asp
       }).addTo(map2);
 
-var landfall = L.polyline(addressPoints2, {color: "red"}).bindPopup("Hurricane Harvey's<br>storm path</br>").addTo(map2);
+var landfall = L.polyline(addressPoints2, {color: "red"}).bindTooltip("Hurricane Harvey's<br>storm path</br>").addTo(map2); //Tool Tip
+  L.marker ([29.1, -97.5], {icon:hurricaneIcon}).bindPopup("Hurricane Harvey<br>August 26</br>").addTo(map2);
+  //L.marker = Hurricane points at 0600 each day
+
 var flight = L.polyline(addressPoints3, {color: "green"}).bindPopup("Flight 2728's path<br>from Boston to Houston</br>").addTo(map2);
-L.marker ([29.1, -97.5]).bindPopup("Hurricane Harvey<br>August 26</br>").addTo(map2);
+
+controls.addOverlay(heat,"Heat Layer");
+controls.addOverlay(landfall, "Hurricane Harvey path");
+controls.addOverlay(flight, "Fligt 2728");
 
 //addressPoints2.forEach(function(point){
           //new L.marker([point[0],point[1]]).bindPopup(point[0]+", "+point[1]).addTo(map1);
         //})
-
 </script>
+<!--<script> //Play my Video
+var ppbutton = document.getElementById("vidbutton");
+ppbutton.addEventListener("click", playPause);
+
+myVideo = document.getElementById("flight_vid");
+function playPause() {
+    if (myVideo.paused) {
+        myVideo.play();
+        ppbutton.innerHTML = "Pause";
+        }
+    else  {
+        myVideo.pause();
+        ppbutton.innerHTML = "Play";
+
+</script>-->
 </body>
