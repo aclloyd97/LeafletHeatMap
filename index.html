@@ -97,7 +97,7 @@
 
     var flight_boston = L.polyline(flightPoints, {color: "green"}).bindPopup("Flight 2728's path<br>from Boston to Houston</br>").addTo(map1);
       //flightPoints.forEach(function(point){new L.marker([point[0],point[1]]).bindPopup(point[3]).addTo(map1);})
-      L.marker ([36.1627, -86.7816], {icon:airplaneIcon}).bindPopup("Flight Path<br>August 26</br>").addTo(map1)   //"Nashville, Tennessee"
+      L.marker ([36.16, -86.78], {icon:airplaneIcon}).bindPopup("Flight Path<br>August 26</br>").addTo(map1)   //"Nashville, Tennessee"
 
     controls.addOverlay(usaHeat,"Heat Layer");
     controls.addOverlay(landfall, "Hurricane Harvey path");
