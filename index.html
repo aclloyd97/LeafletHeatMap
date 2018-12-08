@@ -50,7 +50,7 @@
     }).addTo(map1);
         //https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=<insert-your-apikey-here>
 
-    var hurricaneIcon1 = L.icon({
+    var hurricaneIcon = L.icon({
           iconUrl: 'hurricane-icon.png',
 
           iconSize:     [50, 48], // size of the icon
@@ -59,6 +59,17 @@
           shadowAnchor: [4, 62],  // the same for the shadow
           popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
           });
+
+    var airplaneIcon = L.icon({
+          iconUrl: 'airplane.png',
+
+          iconSize:     [50, 48], // size of the icon
+          //shadowSize:   [50, 64], // size of the shadow
+          iconAnchor:   [25, 25], // point of the icon which will correspond to marker's location
+          shadowAnchor: [4, 62],  // the same for the shadow
+          popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+          });
+
 
     // Copy and paste this line, changing the variable name (totalHeatLayer) and the input to the heatLayer
     // function (addressPoints) to add additional heat layers (keep track of the variable name, you'll need
@@ -82,11 +93,11 @@
 
     var landfall = L.polyline(landfallPoints_0826, {color: "red"}).addTo(map1); //Tool Tip
       //marker.bindTooltip("my tooltip text").openTooltip();
-      L.marker ([29.1, -97.5], {icon:hurricaneIcon1}).bindPopup("Hurricane Harvey<br>August 26</br>").addTo(map1)
+      L.marker ([29.1, -97.5], {icon:hurricaneIcon}).bindPopup("Hurricane Harvey<br>August 26</br>").addTo(map1)
 
     var flight_boston = L.polyline(flightPoints, {color: "green"}).bindPopup("Flight 2728's path<br>from Boston to Houston</br>").addTo(map1);
       //flightPoints.forEach(function(point){new L.marker([point[0],point[1]]).bindPopup(point[3]).addTo(map1);})
-      L.marker ([36.1627, -86.7816]/*, {icon:hurricaneIcon1}*/).bindPopup("Flight Path<br>August 26</br>").addTo(map1)   //"Nashville, Tennessee"
+      L.marker ([36.1627, -86.7816], {icon:airplaneIcon}).bindPopup("Flight Path<br>August 26</br>").addTo(map1)   //"Nashville, Tennessee"
 
     controls.addOverlay(usaHeat,"Heat Layer");
     controls.addOverlay(landfall, "Hurricane Harvey path");
